@@ -139,7 +139,8 @@ function renderDays(days) {
     b.onclick = () => { chosen = d.day; $("mtext").textContent = "سيتم حجز يوم " + d.label + ". هل أنت متأكد؟"; $("modal").classList.add("on"); };
     box.appendChild(b);
   });
-  if (!any) err("e2", "عذرًا، اكتملت جميع المقاعد لمستواك.");
+  if (!days.some((d) => d.total > 0)) err("e2", "لم يتم تخصيص مقاعد لمستواك بعد.");
+  else if (!any) err("e2", "عذرًا، اكتملت جميع المقاعد لمستواك.");
 }
 
 function showDone(r, already) {
